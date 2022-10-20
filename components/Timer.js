@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
-import { Button, View, Text, StyleSheet } from 'react-native';
+import { View, Text, TouchableHighlight } from 'react-native';
 import SettingsContext from "../SettingsContext";
 import styles from './TimerStyle';
 
@@ -40,12 +40,14 @@ function Timer() {
             }
             chronometer();
         }, 1000);
+        return () => clearInterval(interval);
     }, [settings]);
 
     const totalTimeSeconds = mode === 'focus' ? settings.focusMinutes * 60 : settings.pauseMinutes * 60;
     const percentage = Math.round((secondsLeftRef.current / totalTimeSeconds) *100);
 
     let minutes = Math.floor(secondsLeftRef.current / 60);
+    if ( minutes< 0 ) minutes = '0' + minutes;
     let seconds = secondsLeftRef.current % 60;
     if ( seconds < 10) seconds = '0' + seconds;
 
@@ -54,21 +56,40 @@ function Timer() {
             <Text style={styles.mode}>{mode}</Text>
             <Text style={styles.number}>{minutes + ':' + seconds}</Text>
 
-            <View style={styles.controls}>
-                <Button
-                    title='Play'
-                    onPress={() => {
-                        setPaused(false);
-                        pausedRef.current = false;
-                    }}
-                />
-                <Button
-                    title='Pause'
-                    onPress={() => {
-                        setPaused(true);
-                        pausedRef.current = true;
-                    }}
-                />
+            <View style={{flex: 2}}>
+                <View style={styles.controls}>
+                    <TouchableHighlight
+                        style={[styles.touch, styles.playButton]}
+                        onPress={() => {
+                            setPaused(false);
+                            pausedRef.current = false;
+                        }}
+                    >
+                        <Text>Play</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={[styles.touch, styles.pauseButton]}
+                        onPress={() => {
+                            setPaused(true);
+                            pausedRef.current = true;
+                        }}
+                    >
+                        <Text>Pause</Text>
+                    </TouchableHighlight>
+                </View>
+                <View style={[styles.controls, styles.resetBlock]}>
+                    <TouchableHighlight
+                        style={[styles.touch, styles.resetButton]}
+                        onPress={() => {
+                            setPaused(true);
+                            pausedRef.current =true;
+                            setSecondsLeft(settings.focusMinutes * 60);
+                            secondsLeftRef.current = settings.focusMinutes * 60;
+                        }}
+                    >
+                        <Text>Reset</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         </View>
     )
