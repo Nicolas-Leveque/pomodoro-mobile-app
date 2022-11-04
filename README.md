@@ -4,5 +4,11 @@ Application mobile Pomodoro développée en React Native.
 Alterne entre un décompte de 25 minutes de focus et 5 minutes de pause.
 
 Todo: 
-    - création d'une page 'settings' pour régler les temps de focus et de pause
+
+    - création d'une page 'settings' pour régler les temps de focus et de pause => Fait
+
     - ajout d'une barre de progression circulaire
+
+    - Ajout d'une alerte au changement de mode
+
+
