@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     controls: {
-        flex: 3,
+        height: '50%',
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-evenly",
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     timer: {
         marginTop: 25,
-        flex: 3,
+        height: "70%",
         flexDirection: "column",
         alignItems: 'center',
         justifyContent: 'space-between',

@@ -1,8 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import SettingsContext from "./SettingsContext";
 import Timer from "./components/Timer";
+import ModalConfig from "./components/ModalConfig";
 
 export default function App() {
   const [ focusMinutes, setFocusMinutes ] = useState(25);
@@ -20,6 +20,8 @@ export default function App() {
           setPauseMinutes
         }}>
         <Timer />
+          <ModalConfig />
+
       </SettingsContext.Provider>
     </View>
   );
