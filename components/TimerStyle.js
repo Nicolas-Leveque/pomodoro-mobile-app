@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     controls: {
-        height: '50%',
+        height: '100%',
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-evenly",
@@ -36,19 +36,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#4CAF50'
     },
     pauseButton: {
-        backgroundColor: '#E53935'
-    },
-    resetBlock: {
-        flex: 3,
-        justifyContent: "center",
-        alignItems: "center"
-
+        backgroundColor: '#FF6F00'
     },
     resetButton: {
-        backgroundColor: 'red',
-        width: 150,
-        height: 70,
-        borderRadius: 35
+        backgroundColor: '#E53935',
+
     }
 });
 

@@ -76,8 +76,6 @@ function Timer() {
                     >
                         <Text>Pause</Text>
                     </TouchableHighlight>
-                </View>
-                <View style={[styles.controls, styles.resetBlock]}>
                     <TouchableHighlight
                         style={[styles.touch, styles.resetButton]}
                         onPress={() => {
